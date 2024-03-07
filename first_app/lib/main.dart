@@ -12,10 +12,22 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-         appBar: AppBar(
-           title: Text('App Title'),
-         ),
-        body: Text('Body'),
+        appBar: AppBar(
+          title: const Text('App Title'),
+        ),
+        body: const Text('Body'),
+        bottomNavigationBar: BottomNavigationBar(
+          items: const [
+            BottomNavigationBarItem(
+                icon: Icon(Icons.home),
+              label: 'Home'
+            ),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.settings),
+                label: 'Settings'
+            ),
+          ],
+        ),
       ),
     );
   }
