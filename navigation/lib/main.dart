@@ -12,21 +12,44 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Navigation',
-      theme: ThemeData(
-        primarySwatch: Colors.blue
+      theme: ThemeData(primarySwatch: Colors.blue),
+      home: const FirstPage(),
+    );
+  }
+}
+
+class FirstPage extends StatelessWidget {
+  const FirstPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Navigation'),
       ),
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Navigation'),
-        ),
-        body: Center(
-          child: ElevatedButton(
-            onPressed: (){},
-            child: const Text('Press'),
-          ),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => const SecondPage()));
+          },
+          child: const Text('Press'),
         ),
       ),
     );
   }
 }
 
+class SecondPage extends StatelessWidget {
+  const SecondPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        automaticallyImplyLeading: true,
+        title: const Text('Second Page'),
+      ),
+    );
+  }
+}
