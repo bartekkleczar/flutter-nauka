@@ -54,7 +54,7 @@ class _MyAppState extends State<MyApp> {
                         ),
                       ]),
                 )
-              : const SizedBox(),
+              : Image.asset('images/srodowanoc.jpg'),
         ),
         bottomNavigationBar: BottomNavigationBar(
           items: const [
