@@ -14,6 +14,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   String buttonName = 'Click';
   int bottomNavBarItemIndex = 0;
+  bool _isCLicked = false;
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +55,17 @@ class _MyAppState extends State<MyApp> {
                         ),
                       ]),
                 )
-              : Image.asset('images/srodowanoc.jpg'),
+              : GestureDetector(
+                  child: _isCLicked
+                      ? Image.asset('images/srodowanoc.jpg')
+                      : Image.network(
+                          'https://images.photowall.com/products/70946/aurora-borealis-northern-lights.jpg?h=699&q=85'),
+                  onTap: () {
+                    setState(() {
+                      _isCLicked = !_isCLicked;
+                    });
+                  },
+                ),
         ),
         bottomNavigationBar: BottomNavigationBar(
           items: const [
