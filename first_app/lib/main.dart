@@ -24,36 +24,37 @@ class _MyAppState extends State<MyApp> {
           title: const Text('App Title'),
         ),
         body: Center(
-          child: Container(
-            height : double.infinity,
-            width: double.infinity,
-            color: Colors.red,
-            child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  ElevatedButton(
-                    onPressed: () {
-                      setState(() {
-                        buttonName = 'Clicked';
-                      });
-                    },
-                    child: Text(buttonName),
-                  ),
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.orange,
-                        foregroundColor: Colors.white
-                    ),
-                    onPressed: () {
-                      setState(() {
-                        buttonName = 'Clicked';
-                      });
-                    },
-                    child: Text(buttonName),
-                  ),
-                ]),
-          ),
+          child: bottomNavBarItemIndex == 0
+              ? Container(
+                  height: double.infinity,
+                  width: double.infinity,
+                  color: Colors.red,
+                  child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        ElevatedButton(
+                          onPressed: () {
+                            setState(() {
+                              buttonName = 'Clicked';
+                            });
+                          },
+                          child: Text(buttonName),
+                        ),
+                        ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.orange,
+                              foregroundColor: Colors.white),
+                          onPressed: () {
+                            setState(() {
+                              buttonName = 'Clicked';
+                            });
+                          },
+                          child: Text(buttonName),
+                        ),
+                      ]),
+                )
+              : const SizedBox(),
         ),
         bottomNavigationBar: BottomNavigationBar(
           items: const [
