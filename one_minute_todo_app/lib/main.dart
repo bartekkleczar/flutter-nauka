@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:one_minute_todo_app/dialog_box.dart';
 import 'package:one_minute_todo_app/todo_tile.dart';
@@ -59,6 +58,12 @@ class _MyApp extends State<MyApp> {
     );
   }
 
+  void deleteTask(int index){
+    setState(() {
+      toDoList.removeAt(index);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -81,6 +86,7 @@ class _MyApp extends State<MyApp> {
             taskName: toDoList[index][0],
             taskCompleted: toDoList[index][1],
             onChanged: (value) => checkBoxChanged(value, index),
+            deleteFunction: (context) => deleteTask(index),
           );
         },
       ),
