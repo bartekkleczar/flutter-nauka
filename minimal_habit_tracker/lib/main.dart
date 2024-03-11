@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:minimal_habit_tracker/theme/theme_provider.dart';
 import 'package:provider/provider.dart';
@@ -21,7 +22,20 @@ class _MyApp extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Scaffold(),
+      theme: Provider.of<ThemeProvider>(context).themeData,
+      home: Scaffold(
+        appBar: AppBar(),
+        drawer: Drawer(
+          backgroundColor: Theme.of(context).colorScheme.background,
+          child: Center(
+            child: Switch(
+              value: Provider.of<ThemeProvider>(context).isDarkMode,
+              onChanged: (value) =>
+                  Provider.of<ThemeProvider>(context, listen: false).toggleTheme(),
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
